@@ -31,7 +31,7 @@ function Footer() {
                 <div className='md:flex lg:flex gap-10 '>
                     <div>
                         <h2 className='text-[22px] font-semibold text-lime-400 py-2  uppercase'>Contact</h2>
-                        <a href="mailto:chiragjain.jain7@gmail.com" className='text-[16px]  hover:text-lime-400 transition-all duration-150 ease-in-out cursor-pointer'>Email: mehdiali78666@gmail.com</a>
+                        <a href="mailto: mehdiali78666@gmail.com" className='text-[16px]  hover:text-lime-400 transition-all duration-150 ease-in-out cursor-pointer'>Email: mehdiali78666@gmail.com</a>
                         <p className='text-[16px] pb-5 hover:text-lime-400 transition-all duration-150 ease-in-out'>Phone: +92-3323488793</p>
                     </div>
                     <div>
