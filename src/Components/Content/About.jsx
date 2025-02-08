@@ -22,7 +22,7 @@ function About() {
         <p data-aos='fade-left'>
 Hi, I'm Mehdi, a Machine Learning & Data Science enthusiast currently pursuing a Bachelor's in Computer Science. I specialize in building AI-driven solutions and have hands-on experience with Python, SQL, Scikit-learn, PyTorch, and TensorFlow. I’m also skilled in data analysis, predictive modeling, deep learning, and feature engineering, using tools like Pandas, NumPy, Seaborn, and Matplotlib.
   <br />
-  I have experience in CI/CD pipelines, working with GitHub Actions and Hopsworks Feature Store to automate data workflows and model deployment. Passionate about AI and data-driven decision-making, I’m eager to apply my skills to real-world machine learning projects and collaborate with forward-thinking teams to drive innovation.
+  Experienced in CI/CD pipelines, leveraging GitHub Actions and Hopsworks Feature Store for automated data workflows and model deployment. Passionate about AI and data-driven solutions, eager to apply skills to real-world ML projects and collaborate on innovative AI initiatives.
 </p>
 
         <div className='flex mt-8 gap-2 space-x-2 items-center justify-center'>

@@ -6,6 +6,7 @@ import Education from './Components/Content/Education';
 import Techstack from './Components/Content/TechStack';
 import Projects from './Components/Content/Projects';
 import Contact from './Components/Content/Contact';
+import Experience from './Components/Content/Experience';
 import Footer from './Components/Footer/Footer'
 import { useEffect, useState } from 'react'
 import { BallTriangle } from 'react-loader-spinner'
@@ -43,6 +44,7 @@ function App() {
           <Home />
           <About />
           <Education />
+          <Experience />
           <Techstack />
           <Projects />
           <Contact />
