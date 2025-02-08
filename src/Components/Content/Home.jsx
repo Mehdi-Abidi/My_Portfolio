@@ -37,7 +37,7 @@ function Home() {
           <span className='text-lime-400'>My Portfolio</span>
         </h1>
         <p data-aos='fade-left'>
-          I'm a Computer Science student passionate about AI, web development, and technologies like React, Next.js, and Tailwind CSS. I'm eager to contribute to innovative projects and collaborate with forward-thinking teams. Check out my work to see how I blend creativity with technology!
+          Passionate Machine Learning & Data Science enthusiast with expertise in supervised & unsupervised learning, including Neural Networks, Decision Trees, and Regression models. Skilled in data analysis, predictive modeling, and AI-driven insights, leveraging advanced techniques to solve real-world problems. Always eager to innovate and push the boundaries of AI and data-driven decision-making!
         </p>
         <div data-aos='fade-up' className='flex mt-8 gap-2'>
           <div className='flex items-center justify-center'>
