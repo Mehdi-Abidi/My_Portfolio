@@ -14,52 +14,52 @@ import SQL from '../assets/SQL.png'
 const TechStackList = [
     {
         id: 1,
-        image: HTML,
+        image: Python,
     },
     {
         id: 2,
-        image: CSS,
+        image: SQL,
     },
     {
         id: 3,
-        image: TAILWIND,
-    },
-    {
-        id: 4,
-        image: JS,
-    },
-    {
-        id: 5,
-        image: REACT,
-    },
-    {
-        id: 6,
-        image: C,
-    },
-    {
-        id: 7,
-        image: Cpp,
-    },
-        {
-        id: 8,
-        image: Python,
-    },
-        {
-        id: 9,
-        image: Bootstrap,
-    },
-    {
-        id: 10,
         image: VisualStudioCode,
     },
     {
-        id: 11,
+        id: 4,
         image: Github,
     },
     {
+        id: 5,
+        image: C,
+    },
+    {
+        id: 6,
+        image: Cpp,
+    },
+    {
+        id: 7,
+        image: HTML,
+    },
+    {
+        id: 8,
+        image: CSS,
+    },
+    {
+        id: 9,
+        image: JS,
+    },
+    {
+        id: 10,
+        image: TAILWIND,
+    },
+    {
+        id: 11,
+        image: REACT,
+    },
+    {
         id: 12,
-        image: SQL,
-    },        
+        image: Bootstrap,
+    },  
 ]
 
 export default TechStackList
