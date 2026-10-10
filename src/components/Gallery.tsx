@@ -20,13 +20,13 @@ export function Gallery({ shots, title }: { shots: Shot[]; title: string }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-line bg-raised"
+        className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-line bg-[#0b0d12]"
         aria-label={`Open ${s.caption} full screen`}
       >
         <div className="relative aspect-[16/10] w-full">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div key={s.src} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute inset-0">
-              <Image src={s.src} alt={`${title}: ${s.caption}`} fill sizes="(min-width: 1024px) 700px, 100vw" className="object-cover object-top" />
+              <Image src={s.src} alt={`${title}: ${s.caption}`} fill sizes="(min-width: 1024px) 700px, 100vw" className="object-contain" />
             </motion.div>
           </AnimatePresence>
         </div>
