@@ -6,7 +6,7 @@ import { Reveal, SectionHeading, Tag } from "./ui";
 export function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-7xl px-6 py-24 md:px-10">
-      <SectionHeading index="02" title="Experience" text="From a first forecasting model to leading AI engineering on an agentic platform." />
+      <SectionHeading index="02" title="Experience" />
 
       <ol className="relative border-l border-line pl-8 md:pl-12">
         {experience.map((e, i) => (
