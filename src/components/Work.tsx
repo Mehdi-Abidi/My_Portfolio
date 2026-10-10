@@ -35,6 +35,7 @@ export function Work() {
                       </a>
                     ) : null}
                   </div>
+                  {p.shots?.length ? <Gallery shots={p.shots} title={p.name} /> : null}
                 </div>
                 <div>
                   <p className="text-base leading-relaxed text-mute">{p.long}</p>
@@ -48,7 +49,6 @@ export function Work() {
                       ))}
                     </ul>
                   ) : null}
-                  {p.shots?.length ? <Gallery shots={p.shots} title={p.name} /> : null}
                 </div>
               </li>
             </Reveal>

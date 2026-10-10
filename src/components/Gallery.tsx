@@ -16,7 +16,7 @@ export function Gallery({ shots, title }: { shots: Shot[]; title: string }) {
   const s = shots[i];
 
   return (
-    <div className="mt-8">
+    <div className="mt-6">
       <button
         type="button"
         onClick={() => setOpen(true)}
