@@ -103,7 +103,7 @@ export const projects: Project[] = [
   {
     slug: "fingerprint",
     name: "Fingerprint Matcher",
-    short: "Computer vision fingerprint recognition: deep learning segmentation, SIFT features and a Kotlin app that matches a thumb from a phone photo.",
+    short: "Identifies a thumb from a phone photo with deep learning segmentation, SIFT matching and a Kotlin app.",
     long: "A biometric system that identifies a person from an ordinary phone photo of their thumb, no scanner needed. Built for a Deep Learning for Perception course, it pairs a deep learning segmentation model that isolates the finger with classical computer vision that reads the ridge pattern, so matching stays fast, explainable and robust to the angle and distance of each capture.",
     tags: ["Computer Vision", "Deep Learning", "U²-Net", "OpenCV", "SIFT", "Flask", "PostgreSQL", "Kotlin"],
     links: [
@@ -160,11 +160,34 @@ export const projects: Project[] = [
   },
   {
     slug: "tax",
-    name: "Tax assistant bots",
-    short: "RAG based tax consultant assistants with LangChain and Pinecone over structured business directory data.",
-    long: "Generative AI assistants for tax questions, built on RAG with LangChain and Pinecone and backed by automated data pipelines covering thousands of business directories. Two iterations: a US tax assistant and a general tax bot.",
-    tags: ["LangChain", "Pinecone", "RAG", "Python"],
-    github: "https://github.com/Mehdi-Abidi/UsTaxPatriot",
+    name: "Tax consultant bots",
+    short: "BotTax and US TaxPatriot: voice enabled GPT-4 tax assistants that answer from real tax documents and cite their sources.",
+    long: "Two AI tax consultants that answer questions by text or voice, grounded in real tax documents rather than the model's memory. BotTax answers general federal income tax questions; US TaxPatriot specialises in IRS rules for individuals and businesses. Both show the documents and pages behind every answer.",
+    tags: ["RAG", "GPT-4", "LangChain", "Pinecone", "OpenAI Embeddings", "Speech Recognition", "Streamlit"],
+    links: [
+      { label: "BotTax", href: "https://github.com/Mehdi-Abidi/Bottax" },
+      { label: "US TaxPatriot", href: "https://github.com/Mehdi-Abidi/UsTaxPatriot" },
+    ],
+    parts: [
+      {
+        name: "Retrieval pipeline",
+        text: "Questions are embedded with OpenAI text-embedding-3-large and matched against each bot's own Pinecone index of chunked tax documents. A LangChain RetrievalQA chain hands the closest passages to GPT-4 with a prompt that asks for the direct answer, its tax implications, practical steps and the right disclaimers.",
+      },
+      {
+        name: "Voice and interface",
+        text: "Questions can be recorded in the browser and transcribed with Google speech recognition, with an offline Sphinx fallback. Answers render as chat, with sources listed by document and page. BotTax ships dark and light themes.",
+      },
+      {
+        name: "From local to cloud",
+        text: "BotTax began fully local, on FAISS with MiniLM sentence embeddings, then moved to Pinecone and OpenAI embeddings to scale. US TaxPatriot reused that pipeline with an IRS focused knowledge base.",
+      },
+    ],
+    shots: [
+      { src: "/projects/tax/bottax-dark.jpg", caption: "BotTax, live, in its dark theme with voice and text input", w: 1600, h: 1316 },
+      { src: "/projects/tax/bottax-light.jpg", caption: "BotTax in its light theme", w: 1600, h: 1316 },
+      { src: "/projects/tax/ustaxpatriot.jpg", caption: "US TaxPatriot, live, the IRS focused assistant", w: 1600, h: 1188 },
+      { src: "/projects/tax/pipeline.jpg", caption: "How both bots answer: one retrieval pipeline over two knowledge bases", w: 1600, h: 618 },
+    ],
     x: 920,
     y: 210,
   },
