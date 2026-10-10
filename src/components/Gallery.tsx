@@ -5,7 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-type Shot = { src: string; caption: string };
+type Shot = { src: string; caption: string; w: number; h: number };
 
 // One large screenshot with thumbnails underneath; clicking the large one
 // opens it full screen.
@@ -23,10 +23,11 @@ export function Gallery({ shots, title }: { shots: Shot[]; title: string }) {
         className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-line bg-[#0b0d12]"
         aria-label={`Open ${s.caption} full screen`}
       >
-        <div className="relative aspect-[16/10] w-full">
+        {/* the frame takes the shape of the current screenshot, and eases between shapes */}
+        <div className="relative w-full transition-[aspect-ratio] duration-300" style={{ aspectRatio: `${s.w} / ${s.h}` }}>
           <AnimatePresence mode="wait" initial={false}>
             <motion.div key={s.src} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="absolute inset-0">
-              <Image src={s.src} alt={`${title}: ${s.caption}`} fill sizes="(min-width: 1024px) 700px, 100vw" className="object-contain" />
+              <Image src={s.src} alt={`${title}: ${s.caption}`} fill sizes="(min-width: 1024px) 700px, 100vw" className="object-cover" />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -68,7 +69,7 @@ export function Gallery({ shots, title }: { shots: Shot[]; title: string }) {
             <button type="button" aria-label="Close" className="absolute right-5 top-5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/20 text-white">
               <X size={18} />
             </button>
-            <div className="relative aspect-[16/10] w-full max-w-6xl" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full max-w-6xl" style={{ aspectRatio: `${s.w} / ${s.h}` }} onClick={(e) => e.stopPropagation()}>
               <Image src={s.src} alt={`${title}: ${s.caption}`} fill sizes="100vw" className="rounded-lg object-contain" />
             </div>
           </motion.div>

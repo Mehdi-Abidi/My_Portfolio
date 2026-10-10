@@ -32,8 +32,9 @@ export type Project = {
   live?: string;
   // the parts the system is made of, shown as a small list under the description
   parts?: { name: string; text: string }[];
-  // screenshots shown as a gallery in the case file
-  shots?: { src: string; caption: string }[];
+  // screenshots shown as a gallery in the case file; w and h are the image's
+  // pixel size so the frame matches its shape exactly
+  shots?: { src: string; caption: string; w: number; h: number }[];
   // graph node position on the hero stage, in px; omit to keep a project out of the graph
   x?: number;
   y?: number;
@@ -61,10 +62,10 @@ export const projects: Project[] = [
       },
     ],
     shots: [
-      { src: "/projects/securesphere/dashboard.jpg", caption: "Live telemetry: allowed, blocked and sanitized traffic with recent threats" },
-      { src: "/projects/securesphere/logs.jpg", caption: "Audit log of every request with source, developer, team and decision" },
-      { src: "/projects/securesphere/policies.jpg", caption: "Policy workbench: protections switched on per team" },
-      { src: "/projects/securesphere/groups.jpg", caption: "Identity aware groups mapping developers to policies" },
+      { src: "/projects/securesphere/dashboard.jpg", caption: "Live telemetry: allowed, blocked and sanitized traffic with recent threats", w: 1600, h: 1000 },
+      { src: "/projects/securesphere/logs.jpg", caption: "Audit log of every request with source, developer, team and decision", w: 1600, h: 1000 },
+      { src: "/projects/securesphere/policies.jpg", caption: "Policy workbench: protections switched on per team", w: 1600, h: 1000 },
+      { src: "/projects/securesphere/groups.jpg", caption: "Identity aware groups mapping developers to policies", w: 1600, h: 1000 },
     ],
     x: 560,
     y: 60,
@@ -87,10 +88,10 @@ export const projects: Project[] = [
       },
     ],
     shots: [
-      { src: "/projects/pathochat/streamlit-home.jpg", caption: "Version 1: PathoCare AI running on Mistral-7B over the indexed literature" },
-      { src: "/projects/pathochat/streamlit-chat.jpg", caption: "Version 1: an answer drawn from the textbooks, with sources one click away" },
-      { src: "/projects/pathochat/n8n-workflow.jpg", caption: "Version 2: the n8n agent with chat model, memory and a Pinecone retrieval tool" },
-      { src: "/projects/pathochat/n8n-chat.jpg", caption: "Version 2: the agent answering in n8n chat with its run trace alongside" },
+      { src: "/projects/pathochat/streamlit-home.jpg", caption: "Version 1: PathoCare AI running on Mistral-7B over the indexed literature", w: 1600, h: 725 },
+      { src: "/projects/pathochat/streamlit-chat.jpg", caption: "Version 1: an answer drawn from the textbooks, with sources one click away", w: 1600, h: 731 },
+      { src: "/projects/pathochat/n8n-workflow.jpg", caption: "Version 2: the n8n agent with chat model, memory and a Pinecone retrieval tool", w: 1600, h: 593 },
+      { src: "/projects/pathochat/n8n-chat.jpg", caption: "Version 2: the agent answering in n8n chat with its run trace alongside", w: 1600, h: 783 },
     ],
     x: 620,
     y: 440,
