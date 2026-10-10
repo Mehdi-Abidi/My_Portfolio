@@ -1,0 +1,46 @@
+"use client";
+
+import { ArrowUpRight, Github } from "lucide-react";
+import { projects } from "@/data/site";
+import { Reveal, SectionHeading, Tag } from "./ui";
+
+export function Work() {
+  return (
+    <section id="work" className="border-t border-line bg-surface">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-10">
+        <SectionHeading index="01" title="Case files" text="Every node on the graph, opened up. Click a node above to jump to it here." />
+
+        <ol className="border-t border-line">
+          {projects.map((p, i) => (
+            <Reveal key={p.slug} delay={i * 0.04}>
+              <li id={`project-${p.slug}`} className="group grid scroll-mt-28 gap-5 border-b border-line py-9 md:grid-cols-[90px_1fr_1.4fr] md:gap-10">
+                <span className="font-display text-3xl font-extrabold text-accent/60 transition-colors group-hover:text-accent">0{i + 1}</span>
+                <div>
+                  <h3 className="font-display text-2xl font-bold leading-tight">{p.name}</h3>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
+                      <Tag key={t}>{t}</Tag>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex flex-wrap gap-4 text-sm">
+                    {p.github ? (
+                      <a href={p.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-ink transition-colors hover:text-accent">
+                        <Github size={15} /> Code
+                      </a>
+                    ) : null}
+                    {p.live ? (
+                      <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-ink transition-colors hover:text-accent">
+                        <ArrowUpRight size={15} /> Live
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+                <p className="text-base leading-relaxed text-mute">{p.long}</p>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
