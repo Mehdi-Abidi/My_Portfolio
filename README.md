@@ -18,7 +18,7 @@ npm start        # serve the production build
 Everything lives in `src/data/site.ts`:
 
 - `profile` holds name, role, intro, headline, photo, CV path and links.
-- `projects` are the graph nodes. `x` and `y` place each node on a 1200 x 800 stage; the hero scales that stage to the screen. The same list feeds the case files section.
+- `projects` feed the Projects section. Entries with `x` and `y` also appear as graph nodes in the hero; the stage is scaled to fit the screen. Optional `parts` and `shots` add a system breakdown and a screenshot gallery.
 - `experience`, `skills`, `education` and `certifications` fill the experience section.
 
 Replace `public/mehdi.jpg` and `public/Mehdi_Abidi_CV.pdf` to update the portrait and the CV.

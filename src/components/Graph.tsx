@@ -15,7 +15,7 @@ const rise = (i: number) => ({
 // The graph is laid out on a fixed 1200 x 560 stage and scaled to fit the
 // screen, so positions stay exact at every size. Below 768px it becomes a
 // vertical list with a connector line instead. Only projects with x and y
-// become nodes; the rest still appear in the case files.
+// become nodes; the rest still appear in the Projects section.
 const W = 1200;
 const H = 640;
 const ME = { x: 200, y: 180, r: 135 };
