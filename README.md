@@ -1,8 +1,32 @@
-# React + Vite
+# Mehdi Abidi portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site for Syed Muhammad Mehdi Abidi, AI Engineer Lead. The home page is a knowledge graph: the portrait is the centre node and each project is a connected node.
 
-Currently, two official plugins are available:
+Built with Next.js 15 (App Router), React 19, Tailwind CSS 4 and Framer Motion 12. Light and dark themes with a toggle in the nav; the choice is remembered and the OS preference is used on first visit.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run it
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm start        # serve the production build
+```
+
+## Edit the content
+
+Everything lives in `src/data/site.ts`:
+
+- `profile` holds name, role, intro, headline, photo, CV path and links.
+- `projects` are the graph nodes. `x` and `y` place each node on a 1200 x 800 stage; the hero scales that stage to the screen. The same list feeds the case files section.
+- `experience`, `skills`, `education` and `certifications` fill the experience section.
+
+Replace `public/mehdi.jpg` and `public/Mehdi_Abidi_CV.pdf` to update the portrait and the CV.
+
+## Theme
+
+Colours are CSS variables in `src/app/globals.css`, one set for light on `:root` and one for dark on `.dark`. Changing `--accent` in both restyles every highlight.
+
+## Deploy on Vercel
+
+Import the repository on vercel.com, leave the defaults, and deploy. No environment variables are needed.
