@@ -7,15 +7,17 @@ import { profile } from "@/data/site";
 import { ThemeToggle } from "./theme";
 
 const links = [
-  { label: "Graph", href: "#top" },
-  { label: "Work", href: "#work" },
+  { label: "Projects", href: "#work" },
   { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState<string | null>(null);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
 
@@ -26,6 +28,29 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // highlight the menu item for the section currently in the middle of the screen
+  useEffect(() => {
+    const ids = links.map((l) => l.href.slice(1));
+    const pick = () => {
+      const mid = window.innerHeight * 0.4;
+      let found: string | null = null;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const r = el.getBoundingClientRect();
+        if (r.top <= mid && r.bottom > mid) found = id;
+      }
+      setCurrent(found);
+    };
+    pick();
+    window.addEventListener("scroll", pick, { passive: true });
+    window.addEventListener("resize", pick);
+    return () => {
+      window.removeEventListener("scroll", pick);
+      window.removeEventListener("resize", pick);
+    };
+  }, []);
+
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${scrolled ? "bg-bg/80 backdrop-blur-md" : "bg-transparent"}`}>
       <motion.div className="absolute inset-x-0 top-0 h-px origin-left bg-accent" style={{ scaleX: progress }} />
@@ -34,12 +59,16 @@ export function Nav() {
           Mehdi<span className="text-accent">.</span>Abidi
         </a>
 
-        <nav className="hidden items-center gap-8 text-sm text-mute md:flex">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="transition-colors hover:text-ink">
-              {l.label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-7 text-sm text-mute md:flex">
+          {links.map((l) => {
+            const on = current === l.href.slice(1);
+            return (
+              <a key={l.href} href={l.href} aria-current={on ? "true" : undefined} className={`relative py-1 transition-colors hover:text-ink ${on ? "text-ink" : ""}`}>
+                {l.label}
+                {on ? <motion.span layoutId="nav-dot" className="absolute -bottom-1 left-0 right-0 mx-auto h-0.5 w-4 rounded-full bg-accent" /> : null}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
