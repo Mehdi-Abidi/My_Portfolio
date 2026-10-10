@@ -42,8 +42,8 @@ export const projects: Project[] = [
     short: "Security middleware between developer tools and any LLM: prompt injection and jailbreak detection, PII redaction, policy guardrails, audit log.",
     long: "A Node.js proxy that runs as a background system service and intercepts prompts sent from VS Code to any LLM behind GitHub Copilot. Layered guardrails combine regex and heuristic detection for prompt injection and jailbreaks, Microsoft Presidio for PII leakage, and NVIDIA NeMo Guardrails for policy control, with audit logging and rule based enforcement so every request is traceable. A practical LLMSecOps approach for enterprise environments, built as a final year project.",
     tags: ["Node.js", "NeMo Guardrails", "Presidio", "LLMSecOps"],
-    x: 480,
-    y: 70,
+    x: 560,
+    y: 60,
   },
   {
     slug: "rag",
@@ -58,6 +58,8 @@ export const projects: Project[] = [
     short: "Long-term memory for AI agents with cloud snapshots, plus complexity-based routing across four model providers.",
     long: "Cross session memory for AI agents backed by Azure Blob snapshots with debounced refresh, so agents carry personal context between conversations. Alongside it, complexity based model routing across OpenAI, Anthropic, Moonshot and Gemini sends low complexity tasks to models far cheaper per token while keeping output quality.",
     tags: ["Temporal", "Azure Blob", "LLM routing"],
+    x: 920,
+    y: 350,
   },
   {
     slug: "pathochat",
@@ -66,8 +68,8 @@ export const projects: Project[] = [
     long: "A Streamlit chatbot for evidence based medical questions, pre loaded with pathology literature and indexed with FAISS so answers cite what they were drawn from. Version 2.0 turned it into an agentic system with n8n workflows and Pinecone for scalable vector search.",
     tags: ["LangChain", "Mistral-7B", "FAISS", "Pinecone", "n8n"],
     github: "https://github.com/Mehdi-Abidi/Pathochat",
-    x: 480,
-    y: 470,
+    x: 620,
+    y: 440,
   },
   {
     slug: "fingerprint",
@@ -76,8 +78,8 @@ export const projects: Project[] = [
     long: "Fingerprint detection and recognition built for a deep learning for perception course: SIFT feature matching, a PostgreSQL store for templates, and a Kotlin mobile app for capture and real time matching.",
     tags: ["SIFT", "PostgreSQL", "Kotlin", "OpenCV"],
     github: "https://github.com/Mehdi-Abidi/Fingerprint-Matcher",
-    x: 880,
-    y: 270,
+    x: 620,
+    y: 260,
   },
   {
     slug: "aqi",
@@ -87,8 +89,8 @@ export const projects: Project[] = [
     tags: ["scikit-learn", "Hopsworks", "GitHub Actions", "Streamlit"],
     github: "https://github.com/Mehdi-Abidi/Weather_AQI_Predictor",
     live: "https://weatheraqipredictor-gkehryzvj7munc4rwqsumy.streamlit.app/",
-    x: 880,
-    y: 470,
+    x: 920,
+    y: 540,
   },
   {
     slug: "tax",
@@ -97,8 +99,8 @@ export const projects: Project[] = [
     long: "Generative AI assistants for tax questions, built on RAG with LangChain and Pinecone and backed by automated data pipelines covering thousands of business directories. Two iterations: a US tax assistant and a general tax bot.",
     tags: ["LangChain", "Pinecone", "RAG", "Python"],
     github: "https://github.com/Mehdi-Abidi/UsTaxPatriot",
-    x: 880,
-    y: 70,
+    x: 920,
+    y: 160,
   },
 ];
 
@@ -127,6 +129,26 @@ export const experience = [
     where: "Forecasting and real time pipelines",
     text: "Developed an air quality prediction system with real time OpenWeather and Hopsworks pipelines, and automated CI/CD with GitHub Actions.",
   },
+];
+
+// shown in the scrolling ribbon under the hero
+export const stack = [
+  "Python",
+  "FastAPI",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "PyTorch",
+  "LangChain",
+  "LangGraph",
+  "Temporal",
+  "pgvector",
+  "PostgreSQL",
+  "Azure",
+  "Docker",
+  "NeMo Guardrails",
+  "Presidio",
+  "GitHub Actions",
 ];
 
 export const skills = [
