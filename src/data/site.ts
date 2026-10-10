@@ -30,6 +30,8 @@ export type Project = {
   tags: string[];
   github?: string;
   live?: string;
+  // extra labelled repo links, for projects split across several repos
+  links?: { label: string; href: string }[];
   // the parts the system is made of, shown as a small list under the description
   parts?: { name: string; text: string }[];
   // screenshots shown as a gallery in the case file; w and h are the image's
@@ -99,10 +101,32 @@ export const projects: Project[] = [
   {
     slug: "fingerprint",
     name: "Fingerprint Matcher",
-    short: "Full-stack biometric recognition with SIFT, PostgreSQL and a Kotlin mobile app for real-time matching.",
-    long: "Fingerprint detection and recognition built for a deep learning for perception course: SIFT feature matching, a PostgreSQL store for templates, and a Kotlin mobile app for capture and real time matching.",
-    tags: ["SIFT", "PostgreSQL", "Kotlin", "OpenCV"],
-    github: "https://github.com/Mehdi-Abidi/Fingerprint-Matcher",
+    short: "Computer vision fingerprint recognition: deep learning segmentation, SIFT features and a Kotlin app that matches a thumb from a phone photo.",
+    long: "A biometric system that identifies a person from an ordinary phone photo of their thumb, no scanner needed. Built for a Deep Learning for Perception course, it pairs a deep learning segmentation model that isolates the finger with classical computer vision that reads the ridge pattern, so matching stays fast, explainable and robust to the angle and distance of each capture.",
+    tags: ["Computer Vision", "Deep Learning", "U²-Net", "OpenCV", "SIFT", "Flask", "PostgreSQL", "Kotlin"],
+    links: [
+      { label: "Backend", href: "https://github.com/Mehdi-Abidi/Fingerprint-Matcher" },
+      { label: "Android app", href: "https://github.com/Mehdi-Abidi/thumb-recognizer" },
+    ],
+    parts: [
+      {
+        name: "Perception pipeline",
+        text: "Each photo goes through U²-Net, a deep segmentation network run through rembg on ONNX Runtime, to cut the finger out of the background. CLAHE then lifts local contrast so faint ridges stand out, and OpenCV SIFT extracts scale and rotation invariant keypoints along the ridges and minutiae.",
+      },
+      {
+        name: "Matching service",
+        text: "A Flask API enrols a person by storing their SIFT descriptors in PostgreSQL through SQLAlchemy, and identifies a new capture with brute force kNN matching and Lowe's ratio test, ranking every enrolled print by its count of reliable matches.",
+      },
+      {
+        name: "Android app",
+        text: "Kotlin and Jetpack Compose with CameraX: capture the thumb, review, crop to the print, then either enrol it under a name or send it to the API and see the ranked matches. Built as a team of three.",
+      },
+    ],
+    shots: [
+      { src: "/projects/fingerprint/pipeline.jpg", caption: "The pipeline stages, shown on a sample print generated in code", w: 1600, h: 808 },
+      { src: "/projects/fingerprint/matching.jpg", caption: "Real SIFT ratio test matching: the right finger ranks first by a wide margin", w: 1600, h: 755 },
+      { src: "/projects/fingerprint/app.jpg", caption: "Mockup of the Android flow: capture, review, crop, then match or enrol", w: 1600, h: 953 },
+    ],
     x: 620,
     y: 260,
   },
