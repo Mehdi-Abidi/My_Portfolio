@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Theme tokens. The `dark` class on <html> swaps the palette; the inline
+   script in layout.tsx sets it before first paint so there is no flash. */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant touch (@media (hover: none));
+
+:root {
+  --bg: #f6f8fd;
+  --surface: #ffffff;
+  --raised: #eef2fb;
+  --line: rgba(14, 21, 38, 0.1);
+  --accent: #1f4fff;
+  --accent-soft: rgba(31, 79, 255, 0.12);
+  --ink: #0e1526;
+  --mute: #5e677a;
+  --star: rgba(14, 21, 38, 0.18);
+}
+
+.dark {
+  --bg: #06080f;
+  --surface: #0d1120;
+  --raised: #131a2e;
+  --line: rgba(236, 240, 255, 0.1);
+  --accent: #3d7bff;
+  --accent-soft: rgba(61, 123, 255, 0.16);
+  --ink: #eef2ff;
+  --mute: #8b95b3;
+  --star: rgba(236, 240, 255, 0.22);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-ink: var(--ink);
+  --color-mute: var(--mute);
+
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+/* slow drift for the graph stars */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
