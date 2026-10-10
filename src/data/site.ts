@@ -73,9 +73,25 @@ export const projects: Project[] = [
     slug: "pathochat",
     name: "PathoChat 2.0",
     short: "Medical chatbot on LangChain, FAISS and Mistral-7B, extended into an agentic system with n8n workflows and Pinecone.",
-    long: "A Streamlit chatbot for evidence based medical questions, pre loaded with pathology literature and indexed with FAISS so answers cite what they were drawn from. Version 2.0 turned it into an agentic system with n8n workflows and Pinecone for scalable vector search.",
-    tags: ["LangChain", "Mistral-7B", "FAISS", "Pinecone", "n8n"],
+    long: "A pathology assistant that answers questions only from the textbooks it was given, and says so when it does not know. It started as a retrieval pipeline in Python and was rebuilt as an AI agent in n8n that keeps the conversation in memory and decides for itself when to search the medical literature.",
+    tags: ["LangChain", "Mistral-7B", "FAISS", "Streamlit", "n8n", "Pinecone", "OpenAI"],
     github: "https://github.com/Mehdi-Abidi/Pathochat",
+    parts: [
+      {
+        name: "Version 1: retrieval pipeline",
+        text: "Pathology textbooks such as Pathoma and Robbins and Cotran chunked, embedded with all-MiniLM-L6-v2 and indexed in FAISS. A LangChain RetrievalQA chain pulls the top four passages and Mistral-7B-Instruct answers from that context alone, with a prompt that forbids outside knowledge and returns \"I don't know\" when the books are silent. Every answer ships with its source passages, served from a Streamlit app packaged with Docker.",
+      },
+      {
+        name: "Version 2: agentic workflow in n8n",
+        text: "The fixed chain became an n8n AI Agent triggered by chat messages. The agent runs on an OpenAI chat model, keeps a conversation memory so follow up questions make sense, and calls a Pinecone vector store as a tool with OpenAI embeddings, so it retrieves only when a question needs the literature. The workflow is visual, so new tools and data sources plug in without rewriting code.",
+      },
+    ],
+    shots: [
+      { src: "/projects/pathochat/streamlit-home.jpg", caption: "Version 1: PathoCare AI running on Mistral-7B over the indexed literature" },
+      { src: "/projects/pathochat/streamlit-chat.jpg", caption: "Version 1: an answer drawn from the textbooks, with sources one click away" },
+      { src: "/projects/pathochat/n8n-workflow.jpg", caption: "Version 2: the n8n agent with chat model, memory and a Pinecone retrieval tool" },
+      { src: "/projects/pathochat/n8n-chat.jpg", caption: "Version 2: the agent answering in n8n chat with its run trace alongside" },
+    ],
     x: 620,
     y: 440,
   },
