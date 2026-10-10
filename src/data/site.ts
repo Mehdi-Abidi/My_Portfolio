@@ -30,6 +30,10 @@ export type Project = {
   tags: string[];
   github?: string;
   live?: string;
+  // the parts the system is made of, shown as a small list under the description
+  parts?: { name: string; text: string }[];
+  // screenshots shown as a gallery in the case file
+  shots?: { src: string; caption: string }[];
   // graph node position on the hero stage, in px; omit to keep a project out of the graph
   x?: number;
   y?: number;
@@ -40,8 +44,28 @@ export const projects: Project[] = [
     slug: "securesphere",
     name: "SecureSphere-LLM",
     short: "Security middleware between developer tools and any LLM: prompt injection and jailbreak detection, PII redaction, policy guardrails, audit log.",
-    long: "A Node.js proxy that runs as a background system service and intercepts prompts sent from VS Code to any LLM behind GitHub Copilot. Layered guardrails combine regex and heuristic detection for prompt injection and jailbreaks, Microsoft Presidio for PII leakage, and NVIDIA NeMo Guardrails for policy control, with audit logging and rule based enforcement so every request is traceable. A practical LLMSecOps approach for enterprise environments, built as a final year project.",
-    tags: ["Node.js", "NeMo Guardrails", "Presidio", "LLMSecOps"],
+    long: "An LLMSecOps platform that sits between VS Code and the AI coding assistants developers use every day. Every request to Copilot, Gemini, Cloud Code or Claude is intercepted, tied to the developer who sent it, screened by NeMo Guardrails, and logged before it reaches a model. Admins decide per team which protections apply and watch the traffic live from a dashboard. Built as a final year project across three services.",
+    tags: ["Node.js", "NeMo Guardrails", "Presidio", "FastAPI", "React", "LLMSecOps"],
+    parts: [
+      {
+        name: "Interception proxy",
+        text: "A Node.js man in the middle proxy that decrypts editor traffic, normalises prompts and attachments from four assistant protocols into one contract, resolves the developer and team from a shared identity store, and rolls guardrails out per provider and per model behind release gates.",
+      },
+      {
+        name: "Guardrails service",
+        text: "A FastAPI server on NVIDIA NeMo Guardrails with Colang rails for prompt injection, jailbreaks, secrets such as cloud keys and tokens, dangerous commands, topic control and output checks, with Presidio masking personal data and a pytest suite covering each attack class.",
+      },
+      {
+        name: "Admin dashboard",
+        text: "A React control plane with JWT and OAuth sign in, live request telemetry, an audit log viewer, a policy workbench for switching protections per team, and identity aware group management.",
+      },
+    ],
+    shots: [
+      { src: "/projects/securesphere/dashboard.jpg", caption: "Live telemetry: allowed, blocked and sanitized traffic with recent threats" },
+      { src: "/projects/securesphere/logs.jpg", caption: "Audit log of every request with source, developer, team and decision" },
+      { src: "/projects/securesphere/policies.jpg", caption: "Policy workbench: protections switched on per team" },
+      { src: "/projects/securesphere/groups.jpg", caption: "Identity aware groups mapping developers to policies" },
+    ],
     x: 560,
     y: 60,
   },
