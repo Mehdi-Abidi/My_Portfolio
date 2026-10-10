@@ -42,8 +42,8 @@ export const projects: Project[] = [
     short: "Security middleware between developer tools and any LLM: prompt injection and jailbreak detection, PII redaction, policy guardrails, audit log.",
     long: "A Node.js proxy that runs as a background system service and intercepts prompts sent from VS Code to any LLM behind GitHub Copilot. Layered guardrails combine regex and heuristic detection for prompt injection and jailbreaks, Microsoft Presidio for PII leakage, and NVIDIA NeMo Guardrails for policy control, with audit logging and rule based enforcement so every request is traceable. A practical LLMSecOps approach for enterprise environments, built as a final year project.",
     tags: ["Node.js", "NeMo Guardrails", "Presidio", "LLMSecOps"],
-    x: 420,
-    y: 60,
+    x: 480,
+    y: 70,
   },
   {
     slug: "rag",
@@ -66,8 +66,8 @@ export const projects: Project[] = [
     long: "A Streamlit chatbot for evidence based medical questions, pre loaded with pathology literature and indexed with FAISS so answers cite what they were drawn from. Version 2.0 turned it into an agentic system with n8n workflows and Pinecone for scalable vector search.",
     tags: ["LangChain", "Mistral-7B", "FAISS", "Pinecone", "n8n"],
     github: "https://github.com/Mehdi-Abidi/Pathochat",
-    x: 520,
-    y: 420,
+    x: 480,
+    y: 470,
   },
   {
     slug: "fingerprint",
@@ -76,8 +76,8 @@ export const projects: Project[] = [
     long: "Fingerprint detection and recognition built for a deep learning for perception course: SIFT feature matching, a PostgreSQL store for templates, and a Kotlin mobile app for capture and real time matching.",
     tags: ["SIFT", "PostgreSQL", "Kotlin", "OpenCV"],
     github: "https://github.com/Mehdi-Abidi/Fingerprint-Matcher",
-    x: 840,
-    y: 300,
+    x: 880,
+    y: 270,
   },
   {
     slug: "aqi",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     tags: ["scikit-learn", "Hopsworks", "GitHub Actions", "Streamlit"],
     github: "https://github.com/Mehdi-Abidi/Weather_AQI_Predictor",
     live: "https://weatheraqipredictor-gkehryzvj7munc4rwqsumy.streamlit.app/",
-    x: 150,
+    x: 880,
     y: 470,
   },
   {
@@ -97,8 +97,8 @@ export const projects: Project[] = [
     long: "Generative AI assistants for tax questions, built on RAG with LangChain and Pinecone and backed by automated data pipelines covering thousands of business directories. Two iterations: a US tax assistant and a general tax bot.",
     tags: ["LangChain", "Pinecone", "RAG", "Python"],
     github: "https://github.com/Mehdi-Abidi/UsTaxPatriot",
-    x: 820,
-    y: 60,
+    x: 880,
+    y: 70,
   },
 ];
 

@@ -10,8 +10,8 @@ import { profile, projects } from "@/data/site";
 // vertical list with a connector line instead. Only projects with x and y
 // become nodes; the rest still appear in the case files.
 const W = 1200;
-const H = 560;
-const ME = { x: 150, y: 240, r: 135 };
+const H = 540;
+const ME = { x: 170, y: 270, r: 135 };
 const nodes = projects.filter((p): p is typeof p & { x: number; y: number } => p.x !== undefined && p.y !== undefined);
 
 const STARS = Array.from({ length: 70 }, (_, i) => ({
@@ -38,7 +38,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
     if (!el) return;
     const fit = () => {
       const byWidth = el.clientWidth / W;
-      const byHeight = (window.innerHeight - 200) / H;
+      const byHeight = (window.innerHeight - 220) / H;
       setScale(Math.min(byWidth, byHeight));
     };
     fit();
