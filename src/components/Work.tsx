@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Github } from "lucide-react";
 import { projects } from "@/data/site";
+import { Gallery } from "./Gallery";
 import { Reveal, SectionHeading, Tag } from "./ui";
 
 export function Work() {
@@ -35,7 +36,20 @@ export function Work() {
                     ) : null}
                   </div>
                 </div>
-                <p className="text-base leading-relaxed text-mute">{p.long}</p>
+                <div>
+                  <p className="text-base leading-relaxed text-mute">{p.long}</p>
+                  {p.parts?.length ? (
+                    <ul className="mt-6 space-y-4 border-t border-line pt-6">
+                      {p.parts.map((part) => (
+                        <li key={part.name}>
+                          <div className="font-display text-sm font-semibold text-ink">{part.name}</div>
+                          <p className="mt-1 text-sm leading-relaxed text-mute">{part.text}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {p.shots?.length ? <Gallery shots={p.shots} title={p.name} /> : null}
+                </div>
               </li>
             </Reveal>
           ))}
