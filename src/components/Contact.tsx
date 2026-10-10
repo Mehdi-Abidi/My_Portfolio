@@ -15,7 +15,7 @@ export function Contact() {
   return (
     <section id="contact" className="border-t border-line bg-surface">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10">
-        <SectionHeading index="05" title="Contact" text="Open to AI engineering roles, agentic platform work and LLM security consulting." />
+        <SectionHeading index="05" title="Contact" />
 
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal>
