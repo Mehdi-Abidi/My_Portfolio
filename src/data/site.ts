@@ -72,7 +72,36 @@ export const projects: Project[] = [
       { src: "/projects/securesphere/groups.jpg", caption: "Identity aware groups mapping developers to policies", w: 1600, h: 1000 },
     ],
     x: 560,
-    y: 60,
+    y: 70,
+  },
+  {
+    slug: "jobrec",
+    name: "Hybrid Job Recommender",
+    short: "Multi-stage job matching: two-tower retrieval, LambdaMART ranking and LLM re-ranking that explains every pick.",
+    long: "A job recommendation engine built the way large platforms build theirs: retrieve hundreds of candidates fast, rank them precisely, then let an LLM reorder the shortlist and explain each match in plain language. It handles brand new users from their resume alone, reasons over related skills, predicts salary and shows the skill gap for every role. Built as a team project, with a Next.js front end called NexusHire.",
+    tags: ["Recommender Systems", "PyTorch", "FAISS", "XGBoost", "LLM Re-ranking", "FastAPI", "Next.js"],
+    github: "https://github.com/Mehdi-Abidi/Hybrid_Job_Recommendation_System",
+    parts: [
+      {
+        name: "Retrieval",
+        text: "A Two-Tower neural network in PyTorch embeds seekers and jobs into one space, and a FAISS index returns the nearest few hundred jobs. Content based, collaborative and popularity models cover users and jobs with little or no history.",
+      },
+      {
+        name: "Ranking and re-ranking",
+        text: "LambdaMART on XGBoost reorders the candidates using engineered features such as skill overlap, seniority and salary fit. Llama 3.1 on Groq then reorders the top twenty with MMR for diversity and writes the reason behind each match, falling back cleanly when the LLM is unavailable.",
+      },
+      {
+        name: "Career intelligence and evaluation",
+        text: "Resume entity extraction, a skill ontology that treats Django and Flask as close, salary prediction, career path and skill gap analysis, plus deep models explored such as BERT4Rec, LightGCN and Mult-VAE. Everything is measured offline with precision, recall, NDCG and MAP at K, served through FastAPI and covered by 78 tests.",
+      },
+    ],
+    shots: [
+      { src: "/projects/jobrec/nexushire-feed.jpg", caption: "NexusHire, the project's front end, rendering a ranked feed (sample data)", w: 1920, h: 1350 },
+      { src: "/projects/jobrec/nexushire-detail.jpg", caption: "Selecting a match shows the skill journey and why the role fits (sample data)", w: 1920, h: 840 },
+      { src: "/projects/jobrec/pipeline.jpg", caption: "The three stage pipeline: retrieval, ranking and LLM re-ranking", w: 1600, h: 637 },
+    ],
+    x: 920,
+    y: 70,
   },
   {
     slug: "pathochat",
@@ -98,7 +127,7 @@ export const projects: Project[] = [
       { src: "/projects/pathochat/n8n-chat.jpg", caption: "Version 2: the agent answering in n8n chat with its run trace alongside", w: 1600, h: 783 },
     ],
     x: 620,
-    y: 440,
+    y: 465,
   },
   {
     slug: "fingerprint",
@@ -130,7 +159,7 @@ export const projects: Project[] = [
       { src: "/projects/fingerprint/app.jpg", caption: "Mockup of the Android flow: capture, review, crop, then match or enrol", w: 1600, h: 953 },
     ],
     x: 620,
-    y: 260,
+    y: 270,
   },
   {
     slug: "aqi",
@@ -156,7 +185,7 @@ export const projects: Project[] = [
     ],
     textBesideShots: true,
     x: 920,
-    y: 470,
+    y: 490,
   },
   {
     slug: "tax",
@@ -189,7 +218,7 @@ export const projects: Project[] = [
       { src: "/projects/tax/pipeline.jpg", caption: "How both bots answer: one retrieval pipeline over two knowledge bases", w: 1600, h: 618 },
     ],
     x: 920,
-    y: 210,
+    y: 280,
   },
 ];
 
