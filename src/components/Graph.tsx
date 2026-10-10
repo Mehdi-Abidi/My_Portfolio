@@ -3,15 +3,22 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { Download } from "lucide-react";
 import { profile, projects } from "@/data/site";
+
+const rise = (i: number) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, delay: 0.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] as const },
+});
 
 // The graph is laid out on a fixed 1200 x 560 stage and scaled to fit the
 // screen, so positions stay exact at every size. Below 768px it becomes a
 // vertical list with a connector line instead. Only projects with x and y
 // become nodes; the rest still appear in the case files.
 const W = 1200;
-const H = 540;
-const ME = { x: 170, y: 270, r: 135 };
+const H = 640;
+const ME = { x: 200, y: 180, r: 135 };
 const nodes = projects.filter((p): p is typeof p & { x: number; y: number } => p.x !== undefined && p.y !== undefined);
 
 const STARS = Array.from({ length: 70 }, (_, i) => ({
@@ -38,7 +45,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
     if (!el) return;
     const fit = () => {
       const byWidth = el.clientWidth / W;
-      const byHeight = (window.innerHeight - 220) / H;
+      const byHeight = (window.innerHeight - 170) / H;
       setScale(Math.min(byWidth, byHeight));
     };
     fit();
@@ -104,6 +111,29 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
           </div>
           <span className="pointer-events-none absolute inset-[-24px] rounded-full border border-accent/30" style={{ animation: reduce ? "none" : "drift 7s ease-in-out infinite" }} />
         </motion.div>
+
+        {/* headline, intro and CV under the portrait */}
+        <div className="absolute" style={{ left: 40, top: ME.y + ME.r + 40, width: 520 }}>
+          <motion.div {...rise(0)} className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent">
+            {profile.role} · {profile.location}
+          </motion.div>
+          <motion.h1 {...rise(1)} className="font-display text-[46px] font-extrabold leading-[1.02] tracking-tight">
+            {profile.headline[0]}
+            <br />
+            <span className="text-accent">{profile.headline[1]}</span>.
+          </motion.h1>
+          <motion.p {...rise(2)} className="mt-4 max-w-[480px] text-[15px] leading-relaxed text-mute">
+            {profile.intro}
+          </motion.p>
+          <motion.a
+            {...rise(3)}
+            href={profile.cv}
+            download
+            className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+          >
+            <Download size={15} /> Download CV
+          </motion.a>
+        </div>
 
         {/* project nodes */}
         {nodes.map((p, i) => (
