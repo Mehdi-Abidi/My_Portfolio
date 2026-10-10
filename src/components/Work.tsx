@@ -14,9 +14,9 @@ export function Work() {
         <ol className="border-t border-line">
           {projects.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.04}>
-              <li id={`project-${p.slug}`} className="group grid scroll-mt-28 gap-5 border-b border-line py-9 md:grid-cols-[90px_1fr_1.4fr] md:gap-10">
-                <span className="font-display text-3xl font-extrabold text-accent/60 transition-colors group-hover:text-accent">0{i + 1}</span>
-                <div>
+              <li id={`project-${p.slug}`} className="group grid scroll-mt-28 gap-5 border-b border-line py-9 md:grid-cols-[90px_1fr_1.4fr] md:gap-x-10 md:gap-y-0">
+                <span className="font-display text-3xl font-extrabold text-accent/60 transition-colors group-hover:text-accent md:row-span-2">0{i + 1}</span>
+                <div className="md:col-start-2 md:row-start-1">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                     <h3 className="font-display text-2xl font-bold leading-tight">{p.name}</h3>
                     {p.github ? (
@@ -40,9 +40,14 @@ export function Work() {
                       <Tag key={t}>{t}</Tag>
                     ))}
                   </div>
-                  {p.shots?.length ? <Gallery shots={p.shots} title={p.name} /> : null}
                 </div>
-                <div>
+                {p.shots?.length ? (
+                  <div className="md:col-start-2 md:row-start-2">
+                    <Gallery shots={p.shots} title={p.name} />
+                  </div>
+                ) : null}
+                {/* textBesideShots: start the description level with the screenshots, not the title */}
+                <div className={p.textBesideShots ? "md:col-start-3 md:row-start-2 md:mt-6" : "md:col-start-3 md:row-start-1 md:row-span-2"}>
                   <p className="text-base leading-relaxed text-mute">{p.long}</p>
                   {p.parts?.length ? (
                     <ul className="mt-6 space-y-4 border-t border-line pt-6">

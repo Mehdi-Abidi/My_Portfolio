@@ -37,6 +37,8 @@ export type Project = {
   // screenshots shown as a gallery in the case file; w and h are the image's
   // pixel size so the frame matches its shape exactly
   shots?: { src: string; caption: string; w: number; h: number }[];
+  // start the description beside the screenshots instead of beside the title
+  textBesideShots?: boolean;
   // graph node position on the hero stage, in px; omit to keep a project out of the graph
   x?: number;
   y?: number;
@@ -152,6 +154,7 @@ export const projects: Project[] = [
       { src: "/projects/aqi/pipeline.jpg", caption: "Hourly feature pipeline and daily training on GitHub Actions and Hopsworks", w: 1600, h: 600 },
       { src: "/projects/aqi/analysis.jpg", caption: "Real charts from the notebook: feature correlations and Random Forest importance", w: 1600, h: 937 },
     ],
+    textBesideShots: true,
     x: 920,
     y: 470,
   },
