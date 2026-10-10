@@ -37,6 +37,16 @@ export function Experience() {
                 </div>
               </div>
               <p className="mt-4 max-w-3xl leading-relaxed text-mute">{e.text}</p>
+              {e.highlights?.length ? (
+                <ul className="mt-4 max-w-3xl space-y-2">
+                  {e.highlights.map((h) => (
+                    <li key={h} className="flex gap-3 text-[15px] leading-relaxed text-mute">
+                      <span className="mt-[11px] h-px w-4 shrink-0 bg-accent" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </li>
           </Reveal>
         ))}

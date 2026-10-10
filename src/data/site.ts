@@ -231,6 +231,12 @@ export const experience = [
     site: "https://www.agento.au",
     where: "Enterprise agentic workflow platform",
     text: "Lead trustworthy AI engineering for a platform where agents compose and run multi step business workflows. Architected the multi tenant RAG module and long term agent memory, implemented complexity based LLM routing, hardened public endpoints and webhooks, and act as the security reviewer for backend and frontend changes.",
+    highlights: [
+      "Architected a multi tenant RAG module shipped across 7 releases with 29 automated tests, using pgvector HNSW retrieval and row level security to isolate every tenant.",
+      "Built complexity based LLM routing across OpenAI, Anthropic, Moonshot and Gemini, sending simple tasks to models up to 30x cheaper per token without losing quality.",
+      "Hardened 6 public endpoints with spoof resistant per IP rate limiting and Turnstile CAPTCHA, and secured webhook ingress with constant time HMAC verification.",
+      "Engineered long term agent memory on Azure Blob snapshots, and cut telemetry noise with failure only exception capture and breadcrumb tracing in Application Insights.",
+    ],
   },
   {
     period: "Jan 2026 to Jun 2026",
@@ -240,6 +246,12 @@ export const experience = [
     site: "https://imperiumdynamics.com",
     where: "LLM applications and cloud automation",
     text: "Built scalable LLM applications and LangChain agents with modular Python architectures, and AI driven workflows on Microsoft Fabric, Azure AI Foundry and Azure Pipelines.",
+    highlights: [
+      "Built LLM applications and LangChain agents on modular Python architectures designed to scale across client projects.",
+      "Developed AI driven workflows and cloud automation across 3 Microsoft platforms: Fabric, Azure AI Foundry and Azure Pipelines.",
+      "Implemented secure backend authentication for AI services deployed on Azure.",
+      "Standardised development with Git and PDM managed environments for reproducible builds and deployments.",
+    ],
   },
   {
     period: "Jan 2025 to Jan 2026",
@@ -250,6 +262,12 @@ export const experience = [
     site: "https://analyticinsider.com",
     where: "Generative AI applications",
     text: "Built generative AI products including a RAG based tax consultant bot with LangChain and Pinecone, and automated structured data pipelines across thousands of business directories.",
+    highlights: [
+      "Built a RAG tax consultant bot on LangChain and Pinecone that improved query retrieval efficiency by 12%.",
+      "Automated structured data pipelines covering 3,000+ business directories to feed LLM applications at scale.",
+      "Shipped 2 GPT-4 tax assistants, BotTax and US TaxPatriot, with voice input and source citations down to the page.",
+      "Migrated retrieval from local FAISS to Pinecone with 3072 dimension OpenAI embeddings so the bots could scale.",
+    ],
   },
   {
     period: "Sep 2024 to Dec 2024",
@@ -259,6 +277,12 @@ export const experience = [
     site: "https://10pearls.com",
     where: "Forecasting and real time pipelines",
     text: "Developed an air quality prediction system with real time OpenWeather and Hopsworks pipelines, and automated CI/CD with GitHub Actions.",
+    highlights: [
+      "Built an AQI forecaster with Random Forest, Ridge and Logistic Regression that reached 87% accuracy.",
+      "Forecast air quality 72 hours ahead from a year of hourly OpenWeather pollution data.",
+      "Automated CI/CD with GitHub Actions, cutting deployment time by 30%, with hourly feature runs and daily retraining.",
+      "Explained predictions with SHAP and LIME, and served the forecast through a Streamlit dashboard with hazard alerts.",
+    ],
   },
 ];
 
