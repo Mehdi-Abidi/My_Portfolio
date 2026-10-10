@@ -70,22 +70,6 @@ export const projects: Project[] = [
     y: 60,
   },
   {
-    slug: "rag",
-    name: "Multi-tenant RAG",
-    short: "Document and URL ingestion, embeddings, pgvector retrieval and row-level security so every tenant sees only its own knowledge.",
-    long: "A knowledge source module for an enterprise agentic platform. PDF, DOCX and URL ingestion, OpenAI embeddings, pgvector HNSW semantic retrieval, and PostgreSQL row level security for tenant isolation. Web ingestion is hardened against SSRF with DNS pinned fetching, private address blocking and per redirect revalidation. Delivered across incremental releases with an automated test suite.",
-    tags: ["FastAPI", "pgvector", "PostgreSQL RLS", "Azure"],
-  },
-  {
-    slug: "memory",
-    name: "Agent memory and routing",
-    short: "Long-term memory for AI agents with cloud snapshots, plus complexity-based routing across four model providers.",
-    long: "Cross session memory for AI agents backed by Azure Blob snapshots with debounced refresh, so agents carry personal context between conversations. Alongside it, complexity based model routing across OpenAI, Anthropic, Moonshot and Gemini sends low complexity tasks to models far cheaper per token while keeping output quality.",
-    tags: ["Temporal", "Azure Blob", "LLM routing"],
-    x: 920,
-    y: 350,
-  },
-  {
     slug: "pathochat",
     name: "PathoChat 2.0",
     short: "Medical chatbot on LangChain, FAISS and Mistral-7B, extended into an agentic system with n8n workflows and Pinecone.",
@@ -114,7 +98,7 @@ export const projects: Project[] = [
     github: "https://github.com/Mehdi-Abidi/Weather_AQI_Predictor",
     live: "https://weatheraqipredictor-gkehryzvj7munc4rwqsumy.streamlit.app/",
     x: 920,
-    y: 540,
+    y: 470,
   },
   {
     slug: "tax",
@@ -124,7 +108,7 @@ export const projects: Project[] = [
     tags: ["LangChain", "Pinecone", "RAG", "Python"],
     github: "https://github.com/Mehdi-Abidi/UsTaxPatriot",
     x: 920,
-    y: 160,
+    y: 210,
   },
 ];
 
