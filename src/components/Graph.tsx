@@ -28,6 +28,14 @@ const STARS = Array.from({ length: 70 }, (_, i) => ({
   d: (i % 5) * 0.4,
 }));
 
+// Opens a project in the Projects carousel instead of jumping to an anchor;
+// the URL still updates so the link can be shared.
+function openProject(e: React.MouseEvent, slug: string) {
+  e.preventDefault();
+  history.replaceState(null, "", `#project-${slug}`);
+  window.dispatchEvent(new CustomEvent("open-project", { detail: slug }));
+}
+
 function edge(x: number, y: number) {
   const mx = (ME.x + x) / 2;
   return `M${ME.x} ${ME.y} C ${mx} ${ME.y}, ${mx} ${y}, ${x} ${y}`;
@@ -140,6 +148,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
           <motion.a
             key={p.slug}
             href={`#project-${p.slug}`}
+            onClick={(e) => openProject(e, p.slug)}
             onMouseEnter={() => onActive(i)}
             onMouseLeave={() => onActive(null)}
             onFocus={() => onActive(i)}
@@ -179,10 +188,12 @@ export function GraphList() {
       <div className="absolute left-1/2 top-44 bottom-0 w-px bg-accent/40" />
       <ul className="relative mt-8 space-y-5">
         {nodes.map((p) => (
-          <li key={p.slug} className="relative mx-auto max-w-sm rounded-2xl border border-line bg-surface p-4">
-            <span className="absolute -top-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-accent" />
-            <h3 className="font-display text-[15px] font-bold">{p.name}</h3>
-            <p className="mt-1.5 text-[12.5px] leading-relaxed text-mute">{p.short}</p>
+          <li key={p.slug} className="relative mx-auto max-w-sm">
+            <a href={`#project-${p.slug}`} onClick={(e) => openProject(e, p.slug)} className="block rounded-2xl border border-line bg-surface p-4 transition-colors active:border-accent">
+              <span className="absolute -top-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-accent" />
+              <h3 className="font-display text-[15px] font-bold">{p.name}</h3>
+              <p className="mt-1.5 text-[12.5px] leading-relaxed text-mute">{p.short}</p>
+            </a>
           </li>
         ))}
       </ul>
