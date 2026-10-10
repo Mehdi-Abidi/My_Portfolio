@@ -134,10 +134,24 @@ export const projects: Project[] = [
     slug: "aqi",
     name: "AQI Predictor",
     short: "Air quality forecasting with real-time weather pipelines, a feature store and automated retraining through CI/CD.",
-    long: "Predicts Karachi air quality for the next three days from OpenWeather data. Random Forest, Ridge and Logistic Regression models, a Hopsworks feature store, and GitHub Actions pipelines that retrain and redeploy automatically, with SHAP and LIME for explainability and a Streamlit front end.",
-    tags: ["scikit-learn", "Hopsworks", "GitHub Actions", "Streamlit"],
+    long: "Forecasts Karachi's air quality three days ahead and raises an alert when it turns hazardous. It runs as a small MLOps system: fresh pollution data lands every hour, a new model is trained every day, and the app always serves the latest registered model without anyone touching it.",
+    tags: ["scikit-learn", "Random Forest", "Hopsworks", "GitHub Actions", "SHAP", "LIME", "Streamlit"],
     github: "https://github.com/Mehdi-Abidi/Weather_AQI_Predictor",
-    live: "https://weatheraqipredictor-gkehryzvj7munc4rwqsumy.streamlit.app/",
+    parts: [
+      {
+        name: "Feature pipeline",
+        text: "An hourly GitHub Actions job pulls a year of air pollution history for Karachi from OpenWeather, cleans it with median fills, log transforms and z-score outlier removal, builds time, rolling, change, lag and ratio features, and writes them to a Hopsworks feature store with AQI 72 hours ahead as the target.",
+      },
+      {
+        name: "Training and serving",
+        text: "A daily job trains Logistic Regression, a Ridge Classifier swept across regularisation strengths, and a Random Forest, then registers the model in Hopsworks. The Streamlit app pulls it from the registry, shows live weather, a three day forecast and trend chart, and flags hazardous days. SHAP and LIME explain individual predictions.",
+      },
+    ],
+    shots: [
+      { src: "/projects/aqi/dashboard.jpg", caption: "The Streamlit dashboard, recreated from the app code with sample values", w: 1600, h: 1129 },
+      { src: "/projects/aqi/pipeline.jpg", caption: "Hourly feature pipeline and daily training on GitHub Actions and Hopsworks", w: 1600, h: 600 },
+      { src: "/projects/aqi/analysis.jpg", caption: "Real charts from the notebook: feature correlations and Random Forest importance", w: 1600, h: 937 },
+    ],
     x: 920,
     y: 470,
   },
