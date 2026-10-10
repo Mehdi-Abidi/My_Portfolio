@@ -14,7 +14,9 @@ export function Experience() {
             <li className="relative">
               <span className={`absolute -left-[41px] top-1.5 h-3 w-3 rounded-full border-2 border-bg md:-left-[57px] ${i === 0 ? "bg-accent shadow-[0_0_14px_var(--accent)]" : "bg-mute"}`} />
               <div className="font-mono text-xs uppercase tracking-[0.25em] text-accent">{e.period}</div>
-              <h3 className="mt-2 font-display text-2xl font-bold">{e.role}</h3>
+              <h3 className="mt-2 font-display text-2xl font-bold">
+                {e.role} <span className="text-mute">at</span> <span className="text-accent">{e.company}</span>
+              </h3>
               <div className="mt-1 text-sm text-mute">{e.where}</div>
               <p className="mt-4 max-w-3xl leading-relaxed text-mute">{e.text}</p>
             </li>
