@@ -106,9 +106,16 @@ export function Work() {
     };
   }, [go, reduce]);
 
-  // keep the active tab visible when the strip scrolls on small screens
+  // keep the active tab visible when the strip scrolls sideways on small screens.
+  // Scroll only the strip itself: scrollIntoView would also move the page.
   useEffect(() => {
-    tabsRef.current?.querySelector<HTMLElement>(`[data-i="${index}"]`)?.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+    const strip = tabsRef.current;
+    const tab = strip?.querySelector<HTMLElement>(`[data-i="${index}"]`);
+    if (!strip || !tab || strip.scrollWidth <= strip.clientWidth) return;
+    const left = tab.offsetLeft - strip.offsetLeft;
+    const right = left + tab.offsetWidth;
+    if (left < strip.scrollLeft) strip.scrollTo({ left, behavior: "smooth" });
+    else if (right > strip.scrollLeft + strip.clientWidth) strip.scrollTo({ left: right - strip.clientWidth, behavior: "smooth" });
   }, [index]);
 
   const onKey = (e: React.KeyboardEvent) => {
