@@ -307,11 +307,12 @@ export const stack = [
 ];
 
 export const skills = [
-  { group: "Agentic AI", items: ["LangChain", "LangGraph", "RAG", "Temporal", "n8n", "LLM routing", "Agent memory"] },
-  { group: "LLM security", items: ["NeMo Guardrails", "Presidio", "Prompt injection defense", "PII redaction", "Audit logging"] },
-  { group: "Backend", items: ["Python", "FastAPI", "Django", "Flask", "PostgreSQL", "pgvector", "MongoDB"] },
-  { group: "ML", items: ["PyTorch", "TensorFlow", "scikit-learn", "SHAP", "LIME"] },
-  { group: "Cloud and DevOps", items: ["Azure", "Docker", "GitHub Actions", "Jenkins", "CI/CD"] },
+  { group: "Agentic AI", note: "Agents, retrieval and orchestration", items: ["LangChain", "LangGraph", "RAG", "Temporal", "n8n", "LLM routing", "Agent memory", "OpenAI API", "Anthropic Claude", "Hugging Face"] },
+  { group: "LLM security", note: "Guardrails and safe AI in production", items: ["NeMo Guardrails", "Presidio", "Prompt injection defense", "PII redaction", "Topical safety", "Input and output filtering", "Audit logging"] },
+  { group: "Machine learning", note: "Modelling, evaluation and explainability", items: ["PyTorch", "TensorFlow", "Keras", "scikit-learn", "XGBoost", "SHAP", "LIME"] },
+  { group: "Backend and data", note: "APIs, databases and vector search", items: ["Python", "SQL", "FastAPI", "Django", "Flask", "PostgreSQL", "pgvector", "Row level security", "MongoDB", "Pinecone", "FAISS"] },
+  { group: "Cloud and DevOps", note: "Shipping and running it", items: ["Azure Blob Storage", "Application Insights", "Azure AI Foundry", "Microsoft Fabric", "Docker", "GitHub Actions", "Jenkins", "CI/CD", "Git"] },
+  { group: "Frontend and visualisation", note: "Interfaces and dashboards", items: ["Next.js", "React", "TypeScript", "Streamlit", "Matplotlib", "Plotly", "Seaborn"] },
 ];
 
 export const education = {
@@ -328,4 +329,9 @@ export const certifications = [
   "Developing LLM Applications with LangChain, DataCamp",
   "Large Language Models Concepts, DataCamp",
   "Generative AI Concepts, DataCamp",
+];
+
+export const leadership = [
+  { role: "President", org: "IEEE FAST NUCES Student Branch", period: "2025 to now" },
+  { role: "Co-Head, Data Science and ML", org: "GDSC and FDSS", period: "2024 to 2025", text: "Led 10+ workshops, hackathons and seminars engaging 500+ students." },
 ];
