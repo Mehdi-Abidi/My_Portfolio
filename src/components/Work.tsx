@@ -9,7 +9,7 @@ export function Work() {
   return (
     <section id="work" className="border-t border-line bg-surface">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10">
-        <SectionHeading index="01" title="Case files" />
+        <SectionHeading index="01" title="Projects" />
 
         <ol className="border-t border-line">
           {projects.map((p, i) => (
