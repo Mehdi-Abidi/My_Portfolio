@@ -8,7 +8,7 @@ export function Work() {
   return (
     <section id="work" className="border-t border-line bg-surface">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10">
-        <SectionHeading index="01" title="Case files" text="Every node on the graph, opened up. Click a node above to jump to it here." />
+        <SectionHeading index="01" title="Case files" />
 
         <ol className="border-t border-line">
           {projects.map((p, i) => (
