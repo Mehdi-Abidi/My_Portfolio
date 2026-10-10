@@ -10,7 +10,7 @@ import { profile, projects } from "@/data/site";
 // 768px it becomes a vertical list with a connector line instead.
 const W = 1200;
 const H = 800;
-const ME = { x: 250, y: 330, r: 150 };
+const ME = { x: 200, y: 330, r: 150 };
 
 const STARS = Array.from({ length: 70 }, (_, i) => ({
   x: (i * 149) % W,
@@ -38,7 +38,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
   }, []);
 
   return (
-    <div ref={ref} className="relative w-full" style={{ aspectRatio: `${W} / ${H}` }}>
+    <div ref={ref} className="relative w-full overflow-visible" style={{ aspectRatio: `${W} / ${H}` }}>
       <div className="absolute left-0 top-0 origin-top-left" style={{ width: W, height: H, transform: `scale(${scale})` }}>
         {/* stars and edges */}
         <svg width={W} height={H} className="absolute inset-0">
@@ -85,7 +85,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
               fill
               priority
               sizes="300px"
-              className="scale-[1.45] object-cover object-[50%_36%] grayscale transition-[filter] duration-700 group-hover:grayscale-0 touch:grayscale-0"
+              className="object-cover"
             />
           </div>
           <span className="pointer-events-none absolute inset-[-24px] rounded-full border border-accent/30" style={{ animation: reduce ? "none" : "drift 7s ease-in-out infinite" }} />
@@ -103,7 +103,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
             initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: active === null || active === i ? 1 : 0.45, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className={`absolute block w-[260px] -translate-y-1/2 rounded-2xl border bg-surface/90 p-4 backdrop-blur-sm transition-[border-color,box-shadow] duration-300 ${
+            className={`absolute block w-[250px] -translate-y-1/2 rounded-2xl border bg-surface/90 p-4 backdrop-blur-sm transition-[border-color,box-shadow] duration-300 ${
               active === i ? "border-accent shadow-[0_18px_60px_var(--accent-soft)]" : "border-line"
             }`}
             style={{ left: p.x, top: p.y, animation: reduce ? "none" : `drift ${7 + (i % 3)}s ease-in-out ${i * 0.6}s infinite` }}
@@ -130,7 +130,7 @@ export function GraphList() {
   return (
     <div className="relative mt-6">
       <div className="group relative mx-auto h-44 w-44 overflow-hidden rounded-full border-[3px] border-accent shadow-[0_0_0_10px_var(--bg),0_0_0_11px_var(--accent-soft)]">
-        <Image src={profile.photo} alt={profile.fullName} fill priority sizes="176px" className="scale-[1.45] object-cover object-[50%_36%] grayscale touch:grayscale-0" />
+        <Image src={profile.photo} alt={profile.fullName} fill priority sizes="176px" className="object-cover" />
       </div>
       <div className="absolute left-1/2 top-44 bottom-0 w-px bg-accent/40" />
       <ul className="relative mt-8 space-y-5">
