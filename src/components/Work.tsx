@@ -24,6 +24,11 @@ export function Work() {
                         <Github size={13} /> Code
                       </a>
                     ) : null}
+                    {p.links?.map((l) => (
+                      <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-xs text-ink transition-colors hover:border-accent hover:text-accent">
+                        <Github size={13} /> {l.label}
+                      </a>
+                    ))}
                     {p.live ? (
                       <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-xs text-ink transition-colors hover:border-accent hover:text-accent">
                         <ArrowUpRight size={13} /> Live
