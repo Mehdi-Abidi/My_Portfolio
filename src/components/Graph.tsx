@@ -9,8 +9,8 @@ import { profile, projects } from "@/data/site";
 // container width, so positions stay exact at every screen size. Below
 // 768px it becomes a vertical list with a connector line instead.
 const W = 1200;
-const H = 800;
-const ME = { x: 200, y: 330, r: 150 };
+const H = 680;
+const ME = { x: 180, y: 290, r: 135 };
 
 const STARS = Array.from({ length: 70 }, (_, i) => ({
   x: (i * 149) % W,
@@ -29,17 +29,29 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
   const [scale, setScale] = useState(1);
   const reduce = useReducedMotion();
 
+  // Scale to the container width, but never taller than the space left under
+  // the nav, so the whole graph is visible without scrolling.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const ro = new ResizeObserver(([e]) => setScale(e.contentRect.width / W));
+    const fit = () => {
+      const byWidth = el.clientWidth / W;
+      const byHeight = (window.innerHeight - 150) / H;
+      setScale(Math.min(byWidth, byHeight));
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
     ro.observe(el);
-    return () => ro.disconnect();
+    window.addEventListener("resize", fit);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", fit);
+    };
   }, []);
 
   return (
-    <div ref={ref} className="relative w-full overflow-visible" style={{ aspectRatio: `${W} / ${H}` }}>
-      <div className="absolute left-0 top-0 origin-top-left" style={{ width: W, height: H, transform: `scale(${scale})` }}>
+    <div ref={ref} className="relative w-full" style={{ height: H * scale }}>
+      <div className="absolute top-0 origin-top-left" style={{ left: "50%", marginLeft: -(W * scale) / 2, width: W, height: H, transform: `scale(${scale})` }}>
         {/* stars and edges */}
         <svg width={W} height={H} className="absolute inset-0">
           {STARS.map((s, i) => (
@@ -103,15 +115,15 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
             initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: active === null || active === i ? 1 : 0.45, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className={`absolute block w-[250px] -translate-y-1/2 rounded-2xl border bg-surface/90 p-4 backdrop-blur-sm transition-[border-color,box-shadow] duration-300 ${
+            className={`absolute block w-[240px] -translate-y-1/2 rounded-2xl border bg-surface/90 p-3.5 backdrop-blur-sm transition-[border-color,box-shadow] duration-300 ${
               active === i ? "border-accent shadow-[0_18px_60px_var(--accent-soft)]" : "border-line"
             }`}
             style={{ left: p.x, top: p.y, animation: reduce ? "none" : `drift ${7 + (i % 3)}s ease-in-out ${i * 0.6}s infinite` }}
           >
             <span className="absolute -left-[7px] top-[22px] h-3 w-3 rounded-full bg-accent shadow-[0_0_14px_var(--accent)]" />
-            <h3 className="font-display text-[15px] font-bold">{p.name}</h3>
-            <p className="mt-1.5 text-[12.5px] leading-relaxed text-mute">{p.short}</p>
-            <div className="mt-2.5 flex flex-wrap gap-1.5">
+            <h3 className="font-display text-[14px] font-bold">{p.name}</h3>
+            <p className="mt-1 text-[12px] leading-snug text-mute">{p.short}</p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
               {p.tags.slice(0, 3).map((t) => (
                 <span key={t} className="rounded border border-line px-1.5 py-0.5 text-[10px] text-mute">
                   {t}

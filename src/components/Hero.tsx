@@ -18,7 +18,7 @@ export function Hero() {
   const cluster = skills.flatMap((s) => s.items).slice(0, 12);
 
   return (
-    <section id="top" className="relative overflow-hidden pt-24 md:pt-28">
+    <section id="top" className="relative overflow-hidden pt-24 md:pt-24">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="hidden md:block">
           <Graph active={active} onActive={setActive} />
@@ -27,7 +27,7 @@ export function Hero() {
           <GraphList />
         </div>
 
-        <div className="relative mt-4 grid gap-10 pb-20 md:mt-2 md:grid-cols-[1.1fr_1fr] md:items-end">
+        <div className="relative mt-4 grid gap-10 pb-20 md:mt-10 md:grid-cols-[1.1fr_1fr] md:items-end">
           <div>
             <motion.div {...rise(0)} className="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-accent">
               {profile.role} · {profile.location}
