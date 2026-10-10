@@ -9,7 +9,7 @@ export const profile = {
   intro:
     "AI Engineer Lead building agentic systems for enterprise workflows: retrieval that respects tenants, memory that follows the user, routing that picks the right model, and guardrails designed in from the start.",
   headline: ["Everything I build is", "connected"],
-  photo: "/mehdi.jpg",
+  photo: "/mehdi-studio.jpg",
   cv: "/Mehdi_Abidi_CV.pdf",
   email: "mehdiali78666@gmail.com",
   linkedin: "https://linkedin.com/in/mehdiabidii",
