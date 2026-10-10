@@ -10,8 +10,8 @@ export function Experience() {
 
       <ol className="relative border-l border-line pl-8 md:pl-12">
         {experience.map((e, i) => (
-          <Reveal key={e.period} delay={i * 0.06}>
-            <li className="relative mb-14 last:mb-0">
+          <Reveal key={e.period} delay={i * 0.06} className="mb-14 last:mb-0">
+            <li className="relative">
               <span className={`absolute -left-[41px] top-1.5 h-3 w-3 rounded-full border-2 border-bg md:-left-[57px] ${i === 0 ? "bg-accent shadow-[0_0_14px_var(--accent)]" : "bg-mute"}`} />
               <div className="font-mono text-xs uppercase tracking-[0.25em] text-accent">{e.period}</div>
               <h3 className="mt-2 font-display text-2xl font-bold">{e.role}</h3>
