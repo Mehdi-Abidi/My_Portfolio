@@ -81,7 +81,7 @@ export const projects: Project[] = [
     tags: ["SIFT", "PostgreSQL", "Kotlin", "OpenCV"],
     github: "https://github.com/Mehdi-Abidi/Fingerprint-Matcher",
     x: 780,
-    y: 580,
+    y: 560,
   },
   {
     slug: "aqi",
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     github: "https://github.com/Mehdi-Abidi/Weather_AQI_Predictor",
     live: "https://weatheraqipredictor-gkehryzvj7munc4rwqsumy.streamlit.app/",
     x: 130,
-    y: 540,
+    y: 520,
   },
   {
     slug: "tax",

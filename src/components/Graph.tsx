@@ -9,7 +9,7 @@ import { profile, projects } from "@/data/site";
 // container width, so positions stay exact at every screen size. Below
 // 768px it becomes a vertical list with a connector line instead.
 const W = 1200;
-const H = 680;
+const H = 650;
 const ME = { x: 180, y: 290, r: 135 };
 
 const STARS = Array.from({ length: 70 }, (_, i) => ({
@@ -36,7 +36,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
     if (!el) return;
     const fit = () => {
       const byWidth = el.clientWidth / W;
-      const byHeight = (window.innerHeight - 150) / H;
+      const byHeight = (window.innerHeight - 190) / H;
       setScale(Math.min(byWidth, byHeight));
     };
     fit();
