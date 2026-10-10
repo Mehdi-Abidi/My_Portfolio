@@ -5,12 +5,14 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { profile, projects } from "@/data/site";
 
-// The graph is laid out on a fixed 1200 x 760 stage and scaled to the
-// container width, so positions stay exact at every screen size. Below
-// 768px it becomes a vertical list with a connector line instead.
+// The graph is laid out on a fixed 1200 x 560 stage and scaled to fit the
+// screen, so positions stay exact at every size. Below 768px it becomes a
+// vertical list with a connector line instead. Only projects with x and y
+// become nodes; the rest still appear in the case files.
 const W = 1200;
-const H = 650;
-const ME = { x: 180, y: 290, r: 135 };
+const H = 560;
+const ME = { x: 150, y: 240, r: 135 };
+const nodes = projects.filter((p): p is typeof p & { x: number; y: number } => p.x !== undefined && p.y !== undefined);
 
 const STARS = Array.from({ length: 70 }, (_, i) => ({
   x: (i * 149) % W,
@@ -36,7 +38,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
     if (!el) return;
     const fit = () => {
       const byWidth = el.clientWidth / W;
-      const byHeight = (window.innerHeight - 190) / H;
+      const byHeight = (window.innerHeight - 200) / H;
       setScale(Math.min(byWidth, byHeight));
     };
     fit();
@@ -57,7 +59,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
           {STARS.map((s, i) => (
             <circle key={i} cx={s.x} cy={s.y} r={s.r} fill="var(--star)" style={{ animation: `drift ${6 + s.d}s ease-in-out ${s.d}s infinite` }} />
           ))}
-          {projects.map((p, i) => {
+          {nodes.map((p, i) => {
             const on = active === i;
             return (
               <g key={p.slug}>
@@ -104,7 +106,7 @@ export function Graph({ active, onActive }: { active: number | null; onActive: (
         </motion.div>
 
         {/* project nodes */}
-        {projects.map((p, i) => (
+        {nodes.map((p, i) => (
           <motion.a
             key={p.slug}
             href={`#project-${p.slug}`}
@@ -146,7 +148,7 @@ export function GraphList() {
       </div>
       <div className="absolute left-1/2 top-44 bottom-0 w-px bg-accent/40" />
       <ul className="relative mt-8 space-y-5">
-        {projects.map((p) => (
+        {nodes.map((p) => (
           <li key={p.slug} className="relative mx-auto max-w-sm rounded-2xl border border-line bg-surface p-4">
             <span className="absolute -top-[7px] left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-accent" />
             <h3 className="font-display text-[15px] font-bold">{p.name}</h3>

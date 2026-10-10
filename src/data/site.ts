@@ -30,9 +30,9 @@ export type Project = {
   tags: string[];
   github?: string;
   live?: string;
-  // graph node position on the 1200 x 760 hero stage, in px
-  x: number;
-  y: number;
+  // graph node position on the hero stage, in px; omit to keep a project out of the graph
+  x?: number;
+  y?: number;
 };
 
 export const projects: Project[] = [
@@ -42,8 +42,8 @@ export const projects: Project[] = [
     short: "Security middleware between developer tools and any LLM: prompt injection and jailbreak detection, PII redaction, policy guardrails, audit log.",
     long: "A Node.js proxy that runs as a background system service and intercepts prompts sent from VS Code to any LLM behind GitHub Copilot. Layered guardrails combine regex and heuristic detection for prompt injection and jailbreaks, Microsoft Presidio for PII leakage, and NVIDIA NeMo Guardrails for policy control, with audit logging and rule based enforcement so every request is traceable. A practical LLMSecOps approach for enterprise environments, built as a final year project.",
     tags: ["Node.js", "NeMo Guardrails", "Presidio", "LLMSecOps"],
-    x: 430,
-    y: 80,
+    x: 420,
+    y: 60,
   },
   {
     slug: "rag",
@@ -51,8 +51,6 @@ export const projects: Project[] = [
     short: "Document and URL ingestion, embeddings, pgvector retrieval and row-level security so every tenant sees only its own knowledge.",
     long: "A knowledge source module for an enterprise agentic platform. PDF, DOCX and URL ingestion, OpenAI embeddings, pgvector HNSW semantic retrieval, and PostgreSQL row level security for tenant isolation. Web ingestion is hardened against SSRF with DNS pinned fetching, private address blocking and per redirect revalidation. Delivered across incremental releases with an automated test suite.",
     tags: ["FastAPI", "pgvector", "PostgreSQL RLS", "Azure"],
-    x: 760,
-    y: 210,
   },
   {
     slug: "memory",
@@ -60,8 +58,6 @@ export const projects: Project[] = [
     short: "Long-term memory for AI agents with cloud snapshots, plus complexity-based routing across four model providers.",
     long: "Cross session memory for AI agents backed by Azure Blob snapshots with debounced refresh, so agents carry personal context between conversations. Alongside it, complexity based model routing across OpenAI, Anthropic, Moonshot and Gemini sends low complexity tasks to models far cheaper per token while keeping output quality.",
     tags: ["Temporal", "Azure Blob", "LLM routing"],
-    x: 800,
-    y: 400,
   },
   {
     slug: "pathochat",
@@ -70,8 +66,8 @@ export const projects: Project[] = [
     long: "A Streamlit chatbot for evidence based medical questions, pre loaded with pathology literature and indexed with FAISS so answers cite what they were drawn from. Version 2.0 turned it into an agentic system with n8n workflows and Pinecone for scalable vector search.",
     tags: ["LangChain", "Mistral-7B", "FAISS", "Pinecone", "n8n"],
     github: "https://github.com/Mehdi-Abidi/Pathochat",
-    x: 470,
-    y: 470,
+    x: 520,
+    y: 420,
   },
   {
     slug: "fingerprint",
@@ -80,8 +76,8 @@ export const projects: Project[] = [
     long: "Fingerprint detection and recognition built for a deep learning for perception course: SIFT feature matching, a PostgreSQL store for templates, and a Kotlin mobile app for capture and real time matching.",
     tags: ["SIFT", "PostgreSQL", "Kotlin", "OpenCV"],
     github: "https://github.com/Mehdi-Abidi/Fingerprint-Matcher",
-    x: 780,
-    y: 560,
+    x: 840,
+    y: 300,
   },
   {
     slug: "aqi",
@@ -91,8 +87,8 @@ export const projects: Project[] = [
     tags: ["scikit-learn", "Hopsworks", "GitHub Actions", "Streamlit"],
     github: "https://github.com/Mehdi-Abidi/Weather_AQI_Predictor",
     live: "https://weatheraqipredictor-gkehryzvj7munc4rwqsumy.streamlit.app/",
-    x: 130,
-    y: 520,
+    x: 150,
+    y: 470,
   },
   {
     slug: "tax",
@@ -101,8 +97,8 @@ export const projects: Project[] = [
     long: "Generative AI assistants for tax questions, built on RAG with LangChain and Pinecone and backed by automated data pipelines covering thousands of business directories. Two iterations: a US tax assistant and a general tax bot.",
     tags: ["LangChain", "Pinecone", "RAG", "Python"],
     github: "https://github.com/Mehdi-Abidi/UsTaxPatriot",
-    x: 800,
-    y: 30,
+    x: 820,
+    y: 60,
   },
 ];
 
