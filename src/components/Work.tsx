@@ -17,23 +17,23 @@ export function Work() {
               <li id={`project-${p.slug}`} className="group grid scroll-mt-28 gap-5 border-b border-line py-9 md:grid-cols-[90px_1fr_1.4fr] md:gap-10">
                 <span className="font-display text-3xl font-extrabold text-accent/60 transition-colors group-hover:text-accent">0{i + 1}</span>
                 <div>
-                  <h3 className="font-display text-2xl font-bold leading-tight">{p.name}</h3>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <h3 className="font-display text-2xl font-bold leading-tight">{p.name}</h3>
+                    {p.github ? (
+                      <a href={p.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-xs text-ink transition-colors hover:border-accent hover:text-accent">
+                        <Github size={13} /> Code
+                      </a>
+                    ) : null}
+                    {p.live ? (
+                      <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-xs text-ink transition-colors hover:border-accent hover:text-accent">
+                        <ArrowUpRight size={13} /> Live
+                      </a>
+                    ) : null}
+                  </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {p.tags.map((t) => (
                       <Tag key={t}>{t}</Tag>
                     ))}
-                  </div>
-                  <div className="mt-4 flex flex-wrap gap-4 text-sm">
-                    {p.github ? (
-                      <a href={p.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-ink transition-colors hover:text-accent">
-                        <Github size={15} /> Code
-                      </a>
-                    ) : null}
-                    {p.live ? (
-                      <a href={p.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-ink transition-colors hover:text-accent">
-                        <ArrowUpRight size={15} /> Live
-                      </a>
-                    ) : null}
                   </div>
                   {p.shots?.length ? <Gallery shots={p.shots} title={p.name} /> : null}
                 </div>
