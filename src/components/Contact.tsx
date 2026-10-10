@@ -37,7 +37,8 @@ export function Contact() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          {/* sits at the bottom of the row so it lines up with the facts grid, below the headline */}
+          <Reveal delay={0.1} className="lg:self-end">
             <ul className="border-t border-line">
               {rows.map((r) => (
                 <li key={r.label}>
