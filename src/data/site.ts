@@ -319,7 +319,9 @@ export const education = {
   degree: "BS Computer Science",
   school: "FAST NUCES, Karachi",
   period: "2022 to 2026",
+  cgpa: "3.85 / 4.0",
   honors: ["Four time gold medalist", "Rector's honor list, four times", "Dean's honor list, three times"],
+  coursework: ["Deep Learning", "Artificial Intelligence", "Recommender Systems", "Generative AI", "Probability and Statistics"],
 };
 
 export const certifications = [

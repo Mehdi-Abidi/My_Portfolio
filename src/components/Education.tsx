@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, BadgeCheck, GraduationCap, Users } from "lucide-react";
+import { Award, BadgeCheck, BookOpen, GraduationCap, Users } from "lucide-react";
 import { certifications, education, leadership } from "@/data/site";
 import { Reveal, SectionHeading } from "./ui";
 
@@ -19,7 +19,10 @@ export function Education() {
             </div>
             <div className="mt-6 font-mono text-xs uppercase tracking-[0.25em] text-accent">{education.period}</div>
             <h3 className="mt-2 font-display text-3xl font-bold leading-tight">{education.degree}</h3>
-            <div className="mt-1 text-mute">{education.school}</div>
+            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-mute">
+              <span>{education.school}</span>
+              <span className="rounded-full border border-accent/50 px-2.5 py-0.5 font-mono text-xs text-accent">CGPA {education.cgpa}</span>
+            </div>
 
             <div className="mt-8 border-t border-line pt-6">
               <div className="mb-4 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-mute">
@@ -33,6 +36,19 @@ export function Education() {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className="mt-8 border-t border-line pt-6">
+              <div className="mb-4 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-mute">
+                <BookOpen size={14} className="text-accent" /> Relevant coursework
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {education.coursework.map((c) => (
+                  <span key={c} className="rounded-full border border-line bg-bg px-3 py-1 text-[13px] text-ink">
+                    {c}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </Reveal>
